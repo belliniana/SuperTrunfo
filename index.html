@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Exemplo de barra de navegação com Flexbox e notificações">
+    <meta name="keywords" content="barra, navegação, flexbox, HTML, CSS, notificações">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Ana Luiza de Morais Bellini">
+    <title>Super Trunfo - Dinossauros Triássicos</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Super Trunfo — Triássico 🦕</h1>
+            <p class="subtitle">Escolha um atributo e vença a máquina!</p>
+
+            <div class="top-controls">
+                <button id="btn-como-jogar" class="btn-info">Como Jogar</button>
+                <div class="placar">
+                    <div id="placar-jogador">Jogador: 0</div>
+                    <div id="placar-maquina">Máquina: 0</div>
+                </div>
+            </div>
+        </header>
+
+        <main class="arena">
+            <section id="carta-jogador" class="carta verso"></section>
+            <section id="carta-maquina" class="carta verso"></section>
+        </main>
+
+        <div class="controles">
+            <button id="btn-jogar" class="control-btn">Jogar</button>
+            <button id="btn-pausar" class="control-btn" disabled>Pausar</button>
+            <button id="btn-proxima-rodada" class="control-btn" disabled>Próxima Rodada</button>
+            <button id="btn-reiniciar" class="control-btn">Reiniciar</button>
+        </div>
+
+        <div id="resultado" class="resultado" aria-live="polite"></div>
+
+        <div id="como-jogar" class="como-jogar hidden" role="dialog" aria-modal="true">
+            <h2>🦕 Como Jogar — Super Trunfo Triássico</h2>
+            <ol>
+                <li>Clique em <strong>Jogar</strong> para embaralhar e distribuir as cartas.</li>
+                <li>Na sua carta, escolha um <strong>atributo</strong> clicando sobre ele.</li>
+                <li>A carta da máquina será revelada e o atributo comparado.</li>
+                <li>Quem tiver o maior valor vence a rodada e leva a carta adversária.</li>
+                <li>Clique em <strong>Próxima Rodada</strong> para continuar. Pausar interrompe o jogo.</li>
+                <li>O jogo termina quando um jogador fica sem cartas.</li>
+            </ol>
+            <button id="btn-fechar-info" class="btn-info">Entendi!</button>
+        </div>
+
+        <div id="pause-overlay" class="pause-overlay hidden">
+            <h2>JOGO PAUSADO</h2>
+        </div>
+    </div>
+
+    <audio id="sound-win" src="https://www.myinstants.com/media/sounds/coin.mp3" preload="auto"></audio>
+    <audio id="sound-lose" src="https://www.myinstants.com/media/sounds/erro.mp3" preload="auto"></audio>
+
+    <script src="assets/cartas.js"></script>
+    <script src="assets/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,287 @@
+:root {
+    --bg-1: #3b0d0d;
+    --panel: #540f0f;
+    --accent: #ff4b4b;
+    --muted: #ffe4d1;
+    --dark: #1a0a0a;
+}
+
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Press Start 2P", sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(255, 75, 75, 0.06), transparent 10%),
+        linear-gradient(180deg, var(--bg-1), #240606 70%);
+    color: var(--muted);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.12));
+    border-radius: 14px;
+    padding: 20px 22px;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    position: relative;
+}
+
+header {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+h1 {
+    margin: 0;
+    color: var(--accent);
+    font-size: 1.25rem;
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+}
+
+.subtitle {
+    margin: 0;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+.top-controls {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-info {
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--muted);
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-info:hover {
+    background: rgba(255, 75, 75, 0.08);
+    transform: translateY(-2px)
+}
+
+.placar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 75, 75, 0.06);
+}
+
+#placar-jogador,
+#placar-maquina {
+    color: #ffdd73;
+    text-shadow: 1px 1px 0 #8b0000;
+    font-weight: 700;
+}
+
+.arena {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 22px 0;
+    flex-wrap: wrap;
+}
+
+.carta {
+    width: 320px;
+    max-width: calc(50% - 40px);
+    min-height: 360px;
+    background: linear-gradient(180deg, var(--muted), #ffeade);
+    color: var(--dark);
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+    overflow: hidden;
+    transform-origin: center;
+    transition: transform 300ms ease, box-shadow 200ms ease;
+}
+
+.carta.verso {
+    background: linear-gradient(180deg, #5a0b0b, #2e0505);
+    color: transparent;
+    background-image: url("https://i.imgur.com/QYbO2t8.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+}
+
+.carta.revealed {
+    color: var(--dark);
+    transform: scale(1.02);
+}
+
+.carta-nome {
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin-bottom: 8px;
+    color: var(--accent);
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.carta-imagem {
+    width: 88%;
+    max-height: 160px;
+    object-fit: contain;
+    margin: 0 auto 12px;
+    display: block;
+}
+
+.carta-atributos ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.carta-atributos li {
+    background: #ffe4d1;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid rgba(0, 0, 0, 0.06);
+    transition: transform 180ms ease, background 180ms ease, color 180ms;
+    font-weight: 600;
+}
+
+.carta-atributos li:hover {
+    transform: translateX(6px);
+    background: var(--accent);
+    color: #fff;
+}
+
+.controles {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.control-btn {
+    background: var(--panel);
+    border: 2px solid var(--accent);
+    color: var(--muted);
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 120ms;
+}
+
+.control-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.control-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    background: var(--accent);
+    color: var(--dark)
+}
+
+.resultado {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 700;
+    min-height: 26px;
+}
+
+.pause-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(60, 0, 0, 0.7);
+    z-index: 1200;
+    color: var(--accent);
+    font-size: 2rem;
+    text-shadow: 2px 2px 6px black;
+}
+
+.hidden {
+    display: none;
+}
+
+.como-jogar {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 640px;
+    background: #2e0b0b;
+    border: 3px solid var(--accent);
+    padding: 18px;
+    border-radius: 10px;
+    z-index: 1300;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+}
+
+.como-jogar h2 {
+    margin-top: 0;
+    color: #ffdd73;
+}
+
+.como-jogar ol {
+    color: var(--muted);
+    margin-left: 18px;
+}
+
+.como-jogar button {
+    margin-top: 12px;
+}
+
+@media (max-width:900px) {
+    .carta {
+        width: 90%;
+        min-height: 320px;
+        max-width: 520px;
+    }
+
+    .arena {
+        gap: 18px;
+    }
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.96);
+        opacity: 0
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+.carta {
+    animation: popIn 260ms ease both;
+}
